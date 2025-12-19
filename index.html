@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Personal Fashion Blog</title>
+
+  <!-- Font Awesome for icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Google Font for fashion style -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('mainpage.jpg'); /* SAME BACKGROUND FOR ALL SECTIONS */
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      color: white;
+      scroll-behavior: smooth; /* enables smooth scrolling */
+    }
+
+    /* NAVIGATION BAR */
+    nav {
+      width: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      padding: 15px 0;
+      position: fixed;
+      top: 0;
+      left: 0;
+      text-align: center;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin: 0 25px;
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #ffcc00;
+    }
+
+    /* HOME SECTION */
+    #home {
+      margin-top: 150px;
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* centers content horizontally */
+      position: relative;
+    }
+
+    .image-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center; /* ensures image + title are centered */
+    }
+
+    .center-image {
+      width: 250px;
+      height: 250px;
+      border-radius: 50%; /* circle image */
+      object-fit: cover;
+      display: block;
+      border: 3px solid white;
+      margin: 0 auto; /* extra guard for centering */
+    }
+
+    /* Blog title below image */
+    .blog-title {
+      margin-top: 20px;
+      font-size: 36px;
+      font-family: 'Playfair Display', serif; /* fashion-style font */
+      font-weight: 600;
+      color: #ffcc00;
+      text-shadow: 2px 2px 5px black;
+      text-align: center;
+    }
+
+    /* MOVING TEXT */
+    .moving-text-left, .moving-text-right {
+      position: absolute;
+      font-size: 24px;
+      font-weight: bold;
+      color: #ffcc00;
+      text-shadow: 2px 2px 5px black;
+      animation: moveDown 6s linear infinite;
+    }
+
+    .moving-text-left {
+      left: 10px;
+      top: -50px;
+    }
+
+    .moving-text-right {
+      right: 10px;
+      top: -50px;
+    }
+
+    @keyframes moveDown {
+      0% { top: -50px; opacity: 0; }
+      20% { opacity: 1; }
+      50% { top: 50%; opacity: 1; }
+      80% { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    /* ABOUT SECTION */
+    #about {
+      margin-top: 200px;
+      padding: 50px;
+    }
+
+    .about-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 40px;
+      flex-wrap: wrap; /* responsive stacking */
+    }
+
+    .about-text {
+      flex: 1;
+      text-align: left;
+    }
+
+    .about-text h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      max-width: 500px;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    .about-image {
+      flex: 1;
+      text-align: right;
+    }
+
+    .about-image img {
+      width: 300px;
+      height: auto;
+      border-radius: 10px;
+      border: 3px solid white;
+    }
+
+    /* GALLERY SECTION */
+    #gallery {
+      margin-top: 100px;
+      padding: 50px;
+      text-align: center;
+    }
+
+    #gallery h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .gallery-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .gallery-item {
+      text-align: center;
+      color: white;
+    }
+
+    .gallery-item img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 10px;
+      border: 3px solid white;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .gallery-item p {
+      font-size: 16px;
+      max-width: 200px;
+      margin: auto;
+    }
+
+    /* CONTACTS SECTION */
+    #contacts {
+      margin-top: 100px;
+      padding: 50px;
+      text-align: center;
+    }
+
+    #contacts h1 {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    form {
+      max-width: 400px;
+      margin: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    input, textarea {
+      padding: 10px;
+      border-radius: 5px;
+      border: none;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 12px;
+      background: #ffcc00;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #ffaa00;
+    }
+
+    /* SOCIAL ICONS */
+    .social-icons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+    }
+
+    .social-icons a {
+      color: white;
+      font-size: 28px;
+      text-decoration: none;
+    }
+
+    .social-icons a:hover {
+      color: #ffcc00;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVIGATION BAR -->
+  <nav>
+    <a href="#home">HOME</a>
+    <a href="#about">ABOUT</a>
+    <a href="#gallery">GALLERY</a>
+    <a href="#contacts">CONTACTS</a>
+  </nav>
+
+  <!-- HOME SECTION -->
+  <section id="home">
+    <div class="image-wrapper">
+      <img src="circleimage.jpg" class="center-image" alt="Center Image">
+      <div class="blog-title">MY PERSONAL FASHION BLOG</div>
+    </div>
+
+    <!-- Moving text left and right -->
+    <div class="moving-text-left">WELCOME TO MY BLOG</div>
+    <div class="moving-text-right">FASHION & STYLE</div>
+  </section>
+
+  <!-- ABOUT SECTION -->
+  <section id="about">
+    <div class="about-container">
+      <!-- Left side: text -->
+      <div class="about-text">
+        <h1>About Me</h1>
+        <p>
+          My name is Ryan Marfori, I am 19 years old, and I am a male student taking up Computer Application. Fashion is more than just a hobby for me—it is something I am deeply obsessed with. I see fashion as a powerful form of self-expression, where every outfit, color, and silhouette tells a story about who I am and how I feel.
+          I am especially drawn to creative and experimental styles, constantly exploring new looks and turning inspiration into fashion art. Whether I am styling outfits, capturing visuals through photography, or designing concepts, fashion is always part of my creative process. It influences how I see the world and how I present myself.
+          Aside from fashion, I enjoy gaming and making games, where I combine creativity and technology. I also love photography, using it as a way to document style, details, and moments that inspire my fashion ideas. Through this blog, I want to showcase my passion, creativity, and personal journey—where fashion, art, and technology all come together.
+          
+        </p>
+      </div>
+
+      <!-- Right side: image -->
+      <div class="about-image">
+        <img src="aboutme.jpg" alt="About Me Image">
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY SECTION -->
+  <section id="gallery">
+    <h1>Gallery</h1>
+    <div class="gallery-container">
+      <div class="gallery-item">
+        <img src="streetware.jpg" alt="Gallery Image 1">
+        <p>"STREETWARE"
+          THIS WAS TAKEN DURING THE LUNA PARTY AND IT WAS MY COMMON CLOTHES IN MY FASHION IDEAS 
+        </p>
+      </div>
+      <div class="gallery-item">
+        <img src="summer fit.jpg" alt="Gallery Image 2">
+        <p>"SUMMER FIT"
+          DURING MY TRAVEL IN SIARGAO, IT WAS A OPEN SPACE IN YOUR CLOTHES SO I WAS ABLE TO EXPRESS MYSELF
+        </p>
+      </div>
+      <div class="gallery-item">
+        <img src="crossdress.jpg" alt="Gallery Image 3">
+        <p>"CROSS-DRESS"
+          THIS WAS TAKEN DURING HALLOWEEN PARTY AND THIS IS MY FIRST TIME DOING THE CROSSDRESS AS MY FASHIO OUTFIT
+        </p>
+      </div>
+      <!-- Add more images with descriptions as needed -->
+    </div>
+  </section>
+
+  <!-- CONTACTS SECTION -->
+  <section id="contacts">
+    <h1>Contact Me</h1>
+    <!-- Formspree integration -->
+    <form action="https://formspree.io/f/yourFormID" method="POST">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" placeholder="Your Email" required>
+      <textarea name="message" rows="5 placeholder="Your Message" required></textarea>
+      <button type="submit">Send</button>
+    </form>
+
+    <!-- Social Media Icons -->
+<div class="social-icons">
+  <a href="https://www.instagram.com/rayanmarfori/" target="_blank"><i class="fab fa-instagram"></i></a>
+  <a href="https://www.facebook.com/ryan.marfori.9693" target="_blank"><i class="fab fa-facebook"></i></a>
+
+  </div>
+</section>
+
+</body>
+</html>
